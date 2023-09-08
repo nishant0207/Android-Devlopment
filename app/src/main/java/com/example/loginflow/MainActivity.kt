@@ -1,20 +1,15 @@
 package com.example.loginflow
 
 import android.content.ActivityNotFoundException
-import android.content.Context
 import android.content.Intent
-import android.graphics.Paint.Align
 import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
@@ -30,16 +25,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.Modifier.*
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -77,6 +68,7 @@ fun MyAppContent() {
 
         var username by remember { mutableStateOf("") }
         var password by remember { mutableStateOf("") }
+        val context = LocalContext.current
         Text(
             text = "Username",
             modifier = Modifier
@@ -140,7 +132,16 @@ fun MyAppContent() {
             },
         )
         Button(
-            onClick = {/*TODO*/},
+            onClick = {
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse ( "https://www.amazon.com")
+                try{
+                    context.startActivity(intent)
+                }
+                catch(e: ActivityNotFoundException) {
+
+                }
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 16.dp),
@@ -161,7 +162,16 @@ fun MyAppContent() {
         )
 
         Button(
-            onClick = { /*TODO*/ },
+            onClick = {
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse ( "https://www.google.com")
+                try{
+                    context.startActivity(intent)
+                }
+                catch(e: ActivityNotFoundException) {
+
+                }
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 5.dp)
@@ -178,7 +188,16 @@ fun MyAppContent() {
         }
 
         Button(
-            onClick = { /*TODO*/ },
+            onClick = {
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse ( "https://www.github.com")
+                try{
+                    context.startActivity(intent)
+                }
+                catch(e: ActivityNotFoundException) {
+
+                }
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 5.dp)
@@ -194,7 +213,16 @@ fun MyAppContent() {
         }
 
         Button(
-            onClick = { /*TODO*/ },
+            onClick = {
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse ( "https://twitter.com/i/flow/signup")
+                try{
+                    context.startActivity(intent)
+                }
+                catch(e: ActivityNotFoundException) {
+
+                }
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(top = 5.dp)
